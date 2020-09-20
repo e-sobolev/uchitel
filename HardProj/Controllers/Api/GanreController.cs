@@ -5,61 +5,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Caching;
 using System.Web.Http;
 
 namespace HardProj.Controllers.Api
 {
-    [RoutePrefix("api/books")]
-    public class BooksController : ApiController
+    [RoutePrefix("api/ganre")]
+    public class GanreController : ApiController
     {
         [Route("{id}")]
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
             var context = new Context();
-            var book = context.Books.FirstOrDefault(x => x.Id == id);
-
-            if (book == null)
+            var ganre = context.Ganres.FirstOrDefault(x => x.Id == id);
+            
+            if (ganre == null)
             {
                 return BadRequest("Неверный id");
             }
 
-            return Ok(book);
+            return Ok(ganre);
         }
 
         [Route("")]
         [HttpPost]
-        public IHttpActionResult Create(Book book)
+        public IHttpActionResult Create(Ganre ganre)
         {
-            if (book == null)
+            if (ganre == null)
             {
-                return BadRequest("Не введена информация по книге");
+                return BadRequest("Не введена информация по автору");
             }
 
             var context = new Context();
-            context.Books.Add(book);
+            context.Ganres.Add(ganre);
             context.SaveChanges();
 
-            return Ok(book);
+            return Ok(ganre);
         }
 
         [Route("{id}")]
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete (int id)
         {
             var context = new Context();
-            var book = context.Books.FirstOrDefault(x => x.Id == id);
+            var ganre = context.Ganres.FirstOrDefault(x => x.Id == id);
 
-            if (book == null)
+            if (ganre == null)
             {
-                return BadRequest("Не введен id");
+                return BadRequest("Не введен id автора");
             }
 
-            context.Books.Remove(book);
+            context.Ganres.Remove(ganre);
             context.SaveChanges();
 
-            return Ok("Книга удалена!");
+            return Ok("Жанр удалён!");
         }
     }
 }
