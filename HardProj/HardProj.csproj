@@ -116,12 +116,31 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Api\AuthorController.cs" />
     <Compile Include="Controllers\Api\BooksController.cs" />
+    <Compile Include="Controllers\Api\DeleteMethodController.cs" />
+    <Compile Include="Controllers\Api\GanreController.cs" />
     <Compile Include="EF\Context.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009201221125_InitialCreate.cs" />
+    <Compile Include="Migrations\202009201221125_InitialCreate.designer.cs">
+      <DependentUpon>202009201221125_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009201405239_AddAuthorsAndGenres.cs" />
+    <Compile Include="Migrations\202009201405239_AddAuthorsAndGenres.designer.cs">
+      <DependentUpon>202009201405239_AddAuthorsAndGenres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009201414232_ManyToManyLinkingBooks.cs" />
+    <Compile Include="Migrations\202009201414232_ManyToManyLinkingBooks.designer.cs">
+      <DependentUpon>202009201414232_ManyToManyLinkingBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\DeleteMethod.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +155,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009201221125_InitialCreate.resx">
+      <DependentUpon>202009201221125_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009201405239_AddAuthorsAndGenres.resx">
+      <DependentUpon>202009201405239_AddAuthorsAndGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009201414232_ManyToManyLinkingBooks.resx">
+      <DependentUpon>202009201414232_ManyToManyLinkingBooks.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
