@@ -8,7 +8,7 @@ namespace HardProj.Models
     /// <summary>
     /// Сущность жанров
     /// </summary>
-    public class Ganre
+    public class Genre
     {
         /// <summary>
         /// Идентификатор жанра
@@ -19,5 +19,10 @@ namespace HardProj.Models
         /// Название жанра
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Список книг
+        /// </summary>
+        public ICollection<Book> Books { get; set; }
     }
 }

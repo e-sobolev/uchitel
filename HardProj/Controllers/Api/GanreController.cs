@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace HardProj.Controllers.Api
 {
-    [RoutePrefix("api/ganre")]
+    [RoutePrefix("api/genre")]
     public class GanreController : ApiController
     {
         [Route("{id}")]
@@ -17,30 +17,30 @@ namespace HardProj.Controllers.Api
         public IHttpActionResult Get(int id)
         {
             var context = new Context();
-            var ganre = context.Ganres.FirstOrDefault(x => x.Id == id);
+            var genre = context.Genres.FirstOrDefault(x => x.Id == id);
             
-            if (ganre == null)
+            if (genre == null)
             {
                 return BadRequest("Неверный id");
             }
 
-            return Ok(ganre);
+            return Ok(genre);
         }
 
         [Route("")]
         [HttpPost]
-        public IHttpActionResult Create(Ganre ganre)
+        public IHttpActionResult Create(Genre genre)
         {
-            if (ganre == null)
+            if (genre == null)
             {
                 return BadRequest("Не введена информация по автору");
             }
 
             var context = new Context();
-            context.Ganres.Add(ganre);
+            context.Genres.Add(genre);
             context.SaveChanges();
 
-            return Ok(ganre);
+            return Ok(genre);
         }
 
         [Route("{id}")]
@@ -48,14 +48,14 @@ namespace HardProj.Controllers.Api
         public IHttpActionResult Delete (int id)
         {
             var context = new Context();
-            var ganre = context.Ganres.FirstOrDefault(x => x.Id == id);
+            var genre = context.Genres.FirstOrDefault(x => x.Id == id);
 
-            if (ganre == null)
+            if (genre == null)
             {
                 return BadRequest("Не введен id автора");
             }
 
-            context.Ganres.Remove(ganre);
+            context.Genres.Remove(genre);
             context.SaveChanges();
 
             return Ok("Жанр удалён!");

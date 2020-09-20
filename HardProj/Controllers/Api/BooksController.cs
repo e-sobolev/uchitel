@@ -18,7 +18,7 @@ namespace HardProj.Controllers.Api
         public IHttpActionResult Get(int id)
         {
             var context = new Context();
-            var book = context.Books.FirstOrDefault(x => x.Id == id);
+            var book = context.Books.Include("Authors").Include("Genres").FirstOrDefault(x => x.Id == id);
 
             if (book == null)
             {
@@ -38,10 +38,21 @@ namespace HardProj.Controllers.Api
             }
 
             var context = new Context();
+
+            foreach (var genre in book.Genres)
+            {
+                context.Genres.Attach(genre);
+            }
+
+            foreach (var author in book.Authors)
+            {
+                context.Authors.Attach(author);
+            }
+
             context.Books.Add(book);
             context.SaveChanges();
 
-            return Ok(book);
+            return Ok(book.Id);
         }
 
         [Route("{id}")]

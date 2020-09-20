@@ -24,5 +24,10 @@ namespace HardProj.Models
         /// Год выпуска
         /// </summary>
         public int Year { get; set; }
+
+        /// <summary>
+        /// Список книг
+        /// </summary>
+        public ICollection<Book> Books { get; set; }
     }
 }

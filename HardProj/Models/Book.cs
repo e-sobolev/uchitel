@@ -35,5 +35,15 @@ namespace HardProj.Models
         /// Цена
         /// </summary>
         public int Price { get; set; }
+
+        /// <summary>
+        /// Авторы книги
+        /// </summary>
+        public ICollection<Author> Authors { get; set; }
+
+        /// <summary>
+        /// Жанры книги
+        /// </summary>
+        public ICollection<Genre> Genres { get; set; }
     }
 }
